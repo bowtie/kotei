@@ -1,0 +1,41 @@
+# -----------------------------------------------------------------------------
+# Example Configuration for Kotei
+# -----------------------------------------------------------------------------
+
+# Set to true to simulate actions without actually monitoring/searching in Sonarr.
+# Useful for testing configuration changes.
+dry_run: false
+
+# Sonarr Connection Settings
+sonarr:
+    # REQUIRED: Your Sonarr instance base URL
+    baseurl: "http://localhost:8989"
+
+    # REQUIRED: Your Sonarr API Key (find in Sonarr > Settings > General > API Key)
+    apikey: "YOUR_SONARR_API_KEY_HERE"
+
+    # Optional: Path to Sonarr API. Defaults to /api/v3 if omitted.
+    # api_path: "/api/v3"
+
+    # Optional: Timeout for Sonarr API calls (in seconds). Defaults to 15.
+    # timeout_seconds: 15
+
+    # Optional: Number of retries for failed Sonarr API calls. Defaults to 3.
+    # retry_count: 3
+
+    # Optional: Time to wait between retries (in seconds). Defaults to 5.
+    # retry_wait_seconds: 5
+
+# Anime Processing Settings
+# This is a list of animes to monitor. You can add multiple blocks using the '- ' prefix.
+animes:
+    - title: "another-anime" # The part of the URL on animefillerlist.com
+      sonarr_title: "Another Anime Title in Sonarr" # Exact match in your Sonarr library
+      include_canon_types: ["manga", "anime", "mixed"]
+      cutoff_episode: 1 # Start processing from this episode number
+      search_enabled: false # Disable search for this anime
+
+# Scheduling Configuration
+# cron_spec defines the automatic schedule. The example below runs once a day at midnight.
+schedule:
+    cron_spec: "@daily" # Example: Run once a day at midnight
