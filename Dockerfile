@@ -11,7 +11,7 @@ RUN CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o /kotei ./main.go
 
 FROM alpine:3.22.0 AS final
 
-RUN apk add --no-cache ca-certificates tzdata
+RUN apk update && apk upgrade && apk add --no-cache ca-certificates tzdata
 
 WORKDIR /app
 
